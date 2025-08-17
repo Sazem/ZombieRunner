@@ -1,3 +1,5 @@
+![Project Logo](Images/project_logo.png)
+
 This is prototype mobile game project for Android. 
 The idea for the project is to make simple top down infinite runner/shooter game and learn mobile development and behaviour trees (NodeCanvas)
 
