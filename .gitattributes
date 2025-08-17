@@ -1,0 +1,12 @@
+# Ignore all Unity meta files
+*.meta linguist-vendored
+
+# Ignore Unity scene/prefab files
+*.unity linguist-vendored
+*.prefab linguist-vendored
+*.anim linguist-vendored
+
+# Ignore Shader files if you don’t want them counted
+*.shader linguist-vendored
+*.cginc linguist-vendored
+*.hlsl linguist-vendored
