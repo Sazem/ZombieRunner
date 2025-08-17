@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Hitbox
   - 
   - 
   - 
@@ -43,6 +43,9 @@ TagManager:
     locked: 0
   - name: Entities
     uniqueID: 933184529
+    locked: 0
+  - name: Environment
+    uniqueID: 700000899
     locked: 0
   m_RenderingLayers:
   - Default

@@ -10,5 +10,5 @@ The idea for the project was to make simple runner/shooter game and learn mobile
 ## Required Plugins $
 These were removed from the repository because some of them needs licensed from Unity Asset Store.
 - NodeCanvas ($)
+- MoreMountain - Feel ($)
 - Mobile Tools v2.0 + Example Game (free)
-- Feel

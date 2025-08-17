@@ -710,6 +710,7 @@ PlayerSettings:
   webGLCloseOnQuit: 0
   webWasm2023: 0
   scriptingDefineSymbols:
+    Android: NODECANVAS
     Standalone: NODECANVAS
   additionalCompilerArguments: {}
   platformArchitecture: {}

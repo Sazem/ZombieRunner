@@ -78,7 +78,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -88,6 +88,19 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -150,12 +163,12 @@ TextureImporter:
       name: PlayerTorso
       rect:
         serializedVersion: 2
-        x: 77
-        y: 493
+        x: 59
+        y: 484
         width: 17
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -174,10 +187,10 @@ TextureImporter:
         serializedVersion: 2
         x: 80
         y: 483
-        width: 5
+        width: 4
         height: 8
-      alignment: 9
-      pivot: {x: 0.6, y: 1}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -191,15 +204,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerArm
+      name: PlayerHand
       rect:
         serializedVersion: 2
-        x: 98
-        y: 496
-        width: 9
-        height: 9
+        x: 100
+        y: 500
+        width: 5
+        height: 5
       alignment: 9
-      pivot: {x: -0, y: 0.33333334}
+      pivot: {x: 0.5714286, y: -0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -221,7 +234,7 @@ TextureImporter:
         width: 11
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -230,6 +243,94 @@ TextureImporter:
       bones: []
       spriteID: 7b4477f92edfa374496354056a1cecb0
       internalID: 349205803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_brickwall
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 496
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9c41aca89748e84a966165cf66f2784
+      internalID: -1448628866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_asphalt
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 496
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c008bb2579e6bb4f8540c0b99f52f73
+      internalID: -2103449354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerElbow
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 487
+        width: 4
+        height: 4
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3760245b9b6154a48a3daffc8381f717
+      internalID: -1102132578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerArm
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 488
+        width: 3
+        height: 5
+      alignment: 9
+      pivot: {x: 0, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1af3302eff1d714691a7d0757b9c28d
+      internalID: 2090858583
       vertices: []
       indices: 
       edges: []
@@ -248,12 +349,16 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PlayerArm: -894211138
+      PlayerArm: 2090858583
+      PlayerElbow: -1102132578
+      PlayerHand: -894211138
       PlayerHead: 349205803
       PlayerLeg: 143005287
       PlayerTorso: 1402341709
       WhiteCircle: 5171767346870427708
       WhiteTriangle: -3786259183376833858
+      tile_asphalt: -2103449354
+      tile_brickwall: -1448628866
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
