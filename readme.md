@@ -10,12 +10,16 @@ The idea for the project is to make simple top down infinite runner/shooter game
 - Android
 
 ### Progress
-18.8.2025: Added basic Zombie to chase the Player. DamageArea gives dmg and pushes the player.␣␣
-17.8.2025: GameManager Singleton, changed the project build for Android. Player run animation works.␣␣  
-15.8.2025: v.01 Base Unity Project with moveable character, no art or game play yet.␣␣
+**18.8.2025**: Added basic Zombie to chase the Player. DamageArea gives dmg and pushes the player.<br>
+**17.8.2025**: GameManager Singleton, changed the project build for Android. Player run animation works.<br>   
+**15.8.2025**: v.01 Base Unity Project with moveable character, no art or game play yet.<br>
 
 ## Todo (8.2025)
 - Health System
+    - Receive Damage
+    - Visual Effects
+        - Particles
+    - Audio Effects
 - DamageSystem
 	- Push entity hit & damage
 - Character Controller
