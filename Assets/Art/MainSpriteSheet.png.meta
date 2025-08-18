@@ -335,6 +335,138 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: ZombieTorso
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 464
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c39f1754c5af1aa4b87be86437b33888
+      internalID: -819065812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieHead01
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 464
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcd1f1b7e98f97e4c8285b593d7435b6
+      internalID: 906002696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieElbow
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 467
+        width: 4
+        height: 4
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4168a52f4052a8e4ea0fb98dce7a4e3b
+      internalID: 160604730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieArm
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 468
+        width: 4
+        height: 5
+      alignment: 9
+      pivot: {x: -0, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 976c68750b2a85c40a3a748ecd83dc05
+      internalID: -909492447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieHand
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 476
+        width: 5
+        height: 4
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 249b25921b27da74b93286c643bcfb6b
+      internalID: -1140453552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieLeg
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 483
+        width: 4
+        height: 8
+      alignment: 9
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 714a409e25007de42ac19d9e5414a630
+      internalID: 1415540510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -357,6 +489,12 @@ TextureImporter:
       PlayerTorso: 1402341709
       WhiteCircle: 5171767346870427708
       WhiteTriangle: -3786259183376833858
+      ZombieArm: -909492447
+      ZombieElbow: 160604730
+      ZombieHand: -1140453552
+      ZombieHead01: 906002696
+      ZombieLeg: 1415540510
+      ZombieTorso: -819065812
       tile_asphalt: -2103449354
       tile_brickwall: -1448628866
   mipmapLimitGroupName: 

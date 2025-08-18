@@ -3,12 +3,16 @@
 This is prototype mobile game project for Android. 
 The idea for the project is to make simple top down infinite runner/shooter game and learn mobile development and behaviour trees (NodeCanvas)
 
-17.8.2025: GameManager Singleton, changed the project build for Android. Player run animation works.  
-15.8.2025: v.01 Base Unity Project with moveable character, no art or game play yet.  
+![Project Logo](Images/Screenshot2025-08-18.png)
 
 ## Platform
 - Unity 6
 - Android
+
+### Progress
+18.8.2025: Added basic Zombie to chase the Player. DamageArea gives dmg and pushes the player. 
+17.8.2025: GameManager Singleton, changed the project build for Android. Player run animation works.  
+15.8.2025: v.01 Base Unity Project with moveable character, no art or game play yet.  
 
 ## Todo (8.2025)
 - Health System
