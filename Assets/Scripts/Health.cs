@@ -37,13 +37,16 @@ public class Health : MonoBehaviour
     }
 
     // give damage to the entity with pushforce.
-    public void TakeHit(int damage, Vector3 hitPoint, float hitForce)
+    public void TakeHit(int damage, Vector3 hitDir, float hitForce)
     {
+        PlayerMovement playerMovement = GetComponent<PlayerMovement>();
+        playerMovement.ReceivePush(hitDir, hitForce);
         TakeDamage(damage);
     }
 
     public void Die()
     {
+        Debug.Log("Diee");
         // Evoke signal for possible:
         //      GameManager
         //      Hud

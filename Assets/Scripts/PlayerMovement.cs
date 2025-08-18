@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -8,7 +9,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
 
     private Vector3 prevPosition; // last position for calculating the speed from the moved distance.
-
+    private Vector2 pushVelocity;
+    private float pushDownTimer = 0f;
+    [SerializeField] private float pushDecay = 5f;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -23,9 +26,26 @@ public class PlayerMovement : MonoBehaviour
     //      B) Send raycast forward to player, when obstacle in front, stop movement. 
     void FixedUpdate()
     {
-        // Move forward constantly, its an infinite runner!
-        Vector2 forward = transform.up * moveSpeed * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + forward);
+        // Always move forward based on facing direction
+        Vector2 forwardVelocity = transform.up * moveSpeed;
+
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
+        {
+            pushDownTimer += Time.deltaTime; // added small delay to reverse. The player movement is a lot smoother. Without this, the player can change the rotation in same frame and it started to look jumpy.
+            if (pushDownTimer > 0.1)
+            {
+                forwardVelocity *= -1; // reverse movement when both keys are hold
+            }
+        }
+        else
+        {
+            pushDownTimer = 0.0f;
+        }
+        // Blend knockback and movement
+        rb.linearVelocity = forwardVelocity + pushVelocity;
+
+        // Gradually reduce knockback
+        pushVelocity = Vector2.Lerp(pushVelocity, Vector2.zero, pushDecay * Time.fixedDeltaTime);
 
         // Rotate with A/D keys (testing before UI & mobile export)
         float turnInput = Input.GetAxisRaw("Horizontal"); // A = -1, D = 1
@@ -41,5 +61,11 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetFloat("speed", currentVelocity);
         }
+    }
+
+
+    public void ReceivePush(Vector3 dir, float pushAmount)
+    {
+        pushVelocity = dir * pushAmount;
     }
 }

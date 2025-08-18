@@ -1,4 +1,6 @@
+using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.AdaptivePerformance.VisualScripting;
 
 public class DamageArea : MonoBehaviour
 {
@@ -18,6 +20,16 @@ public class DamageArea : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collision just hit us" + collision.gameObject.name);
+        if (collision.CompareTag("Player"))
+        {
+            Debug.Log("Collision just hit us" + collision.gameObject.name);
+            Vector3 dir = (collision.gameObject.transform.position - this.gameObject.transform.position).normalized;
+            Debug.DrawLine(transform.position, collision.transform.position, Color.red, 0.5f);
+            Health playerHealth = collision.GetComponent<Health>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeHit(damage, dir, pushAmount);
+            }
+        }
     }
 }
