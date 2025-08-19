@@ -1,9 +1,21 @@
+using System;
+using System.Collections;
+using NodeCanvas.Tasks.Actions;
+using Unity.Cinemachine;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; set; }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private GameObject playerPrefab;
+    public GameObject playerInstance; // reference for the current target.
+    [SerializeField] private GameObject zombiePrefab;
+    private int currentScore = 0;
+    private bool GameIsOn = false;
+    [SerializeField] private CinemachineCamera cinemachineCamera;
+    [SerializeField] private GameObject[] spawnpoints;
     private void Awake()
     {
         if (Instance == null)
@@ -16,18 +28,98 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     void Start()
     {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        spawnpoints = GameObject.FindGameObjectsWithTag("Spawnpoint");
     }
     public void HelloWorld()
     {
         Debug.Log("GM says hello world");
     }
+
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.O))
+        {
+            StartGame();
+        }
+    }
+
+    // enemies can receive the player as target with this function
+    public GameObject GetPlayer()
+    {
+        if (playerInstance != null)
+        {
+            return playerInstance;
+        }
+        else
+        {
+            Debug.LogWarning("No player instance on scene");
+            return null;
+        }
+    }
+
+    // when menu "play" button is pressed, init game stats.
+    public void StartGame()
+    {
+        print("starting the game");
+        cinemachineCamera.Follow = null;
+        if (playerInstance != null)
+        {
+            Destroy(playerInstance); // remove possible player from the scene.
+        }
+        // spawn player using random spawnpoint
+        SpawnPlayer();
+        // init score
+        currentScore = 0;
+        StartCoroutine(GameLoop());
+    }
+    IEnumerator GameLoop()
+    {
+        print("We are at the game loop");
+        GameIsOn = true;
+        while (GameIsOn) // keep the GameLoop until player dead and/or GameEnded. 
+        {
+            yield return null;
+        }
+        GameEnded();
+    } // spawning zombies loop etc.
+
+    // calculate end score, show scorehud and menu buttons. 
+    public void GameEnded()
+    {
+        // Scoreboard.
+        // calculate and show end score.
+        // if highscore, set new highscore
+        // show "NEW HIGH SCORE" sprite with tween animation
+        // save the highscore
+    }
+
+    // Called from health script, after hits 0.
+    public void PlayerDead()
+    {
+        GameIsOn = false;
+    }
+
+    public void SpawnPlayer()
+    {
+        playerInstance = Instantiate(playerPrefab, GetRandomSpawnPointPosition(), quaternion.identity);
+        cinemachineCamera.Follow = playerInstance.transform;
+    }
+
+    public Vector3 GetRandomSpawnPointPosition()
+    {
+        if (spawnpoints.Length > 0)
+        {
+            return spawnpoints[UnityEngine.Random.Range(0, spawnpoints.Length)].transform.position; // return random transform position from the spawnpoint arraylist.
+        }
+        else
+        {
+            Debug.LogWarning("No spawnpoint found at the scene, returned zero -position");
+            return Vector3.zero;
+        }
+    }
+
+    // Instantiate(respawnPrefab, respawn.transform.position, respawn.transform.rotation);
+
 }
