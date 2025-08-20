@@ -10,7 +10,7 @@ The idea for the project is to make simple top down infinite runner/shooter game
 - Android
 
 ### Progress
-**19-20.8.2025**: Deathprefab, floor mockup sprite. Interface for pushable entities. etc
+**19-20.8.2025**: Deathprefab, floor mockup sprite. Interface for pushable entities. etc<br>
 **18.8.2025**: Added basic Zombie to chase the Player. DamageArea gives dmg and pushes the player.<br>
 **17.8.2025**: GameManager Singleton, changed the project build for Android. Player run animation works.<br>
 **15.8.2025**: v.01 Base Unity Project with moveable character, no art or game play yet.<br>
@@ -53,7 +53,7 @@ The idea for the project is to make simple top down infinite runner/shooter game
 - **Graphics**
 	- [x] Player
 	- [ ] Zombies
-        - [ ] Default Zombie
+        - [x] Default Zombie
         - [ ] Big Zombie
         - [ ] Slime Zombie 
 	- [ ] HUD
