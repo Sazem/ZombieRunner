@@ -10,10 +10,16 @@ public class Health : MonoBehaviour
 
     public Action onDeath;
     public Action onHealthChanged;
+    public IPushable pushable;
+    [SerializeField] private GameObject deathPrefab;
     void Start()
     {
-        startingHealth = currentHealth;
-        GameManager.Instance.HelloWorld();
+        currentHealth = startingHealth;
+        pushable = GetComponent<IPushable>();
+        if (pushable != null)
+        {
+            print(pushable.ToString());
+        }
     }
 
     void Update()
@@ -39,8 +45,7 @@ public class Health : MonoBehaviour
     // give damage to the entity with pushforce.
     public void TakeHit(int damage, Vector3 hitDir, float hitForce)
     {
-        PlayerMovement playerMovement = GetComponent<PlayerMovement>();
-        playerMovement.ReceivePush(hitDir, hitForce);
+        pushable?.ReceivePush(hitDir, hitForce);
         TakeDamage(damage);
     }
 
@@ -51,8 +56,13 @@ public class Health : MonoBehaviour
         //      GameManager
         //      Hud
         //      etc.
+        if (deathPrefab != null)
+        {
+            Instantiate(deathPrefab, this.transform.position, transform.rotation);
+        }
         onDeath?.Invoke(); // null condition operator, if there is this has method registered it will call them. If empty, it will not do the invoke. 
-        // remove entitys
+                           // remove entitys
+        Destroy(gameObject);
     }
     
 }

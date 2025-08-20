@@ -10,10 +10,13 @@ public class DamageArea : MonoBehaviour
     [SerializeField] private float hitProbability = 0.6f;
     private float attackTimer = 0.0f;
     private bool attacked = false;
+    [SerializeField]
+    private TargetType targetFlags;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -26,14 +29,14 @@ public class DamageArea : MonoBehaviour
         else
         {
             attackTimer = 0.0f;
-        }            
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (attackTimer <= 0.0f) // dont attack, if cooldown is active
         {
-            if (collision.CompareTag("Player"))
+            if (IsTarget(collision.tag)) // check if damagearea is touching correct target -group.
             {
                 Vector3 dir = (collision.gameObject.transform.position - this.gameObject.transform.position).normalized;
                 // TODO
@@ -43,14 +46,31 @@ public class DamageArea : MonoBehaviour
                 if (randomProbability <= hitProbability)
                 { // random hit.
                     Debug.DrawLine(transform.position, collision.transform.position, Color.red, 0.5f);
-                    Health playerHealth = collision.GetComponent<Health>();
-                    if (playerHealth != null)
+                    Health health = collision.GetComponent<Health>();
+                    if (health != null)
                     {
-                        playerHealth.TakeHit(damage, dir, pushAmount);
+                        health.TakeHit(damage, dir, pushAmount);
                     }
                 }
                 attackTimer = attackCooldown;
             }
         }
     }
+
+    private bool IsTarget(string tag)
+    {
+        if (tag == "Player" && targetFlags.HasFlag(TargetType.Player)) return true;
+        if (tag == "Enemy"  && targetFlags.HasFlag(TargetType.Enemy))  return true;
+        return false;
+    }
+
+
+    [Flags]
+    public enum TargetType
+    {
+        None   = 0,
+        Player = 1 << 0,
+        Enemy  = 1 << 1,
+    }
+
 }

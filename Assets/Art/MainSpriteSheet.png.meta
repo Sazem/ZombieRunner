@@ -344,7 +344,7 @@ TextureImporter:
         width: 17
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -366,7 +366,7 @@ TextureImporter:
         width: 11
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -467,6 +467,204 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: PlayerHeadDead
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 494
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c29c5ffd72f476c4692bcf4c74e44898
+      internalID: 1462996082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerDeadTorso
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 480
+        width: 15
+        height: 12
+      alignment: 9
+      pivot: {x: 0.4666667, y: 0.16666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de0099f358e288e41984355000487684
+      internalID: -1388790999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerHandLeftDead
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 489
+        width: 8
+        height: 10
+      alignment: 9
+      pivot: {x: 0.75, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0687f17cfeb0b174a9a46b91daa973cb
+      internalID: 2017677864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerHandRightDead
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 487
+        width: 8
+        height: 12
+      alignment: 9
+      pivot: {x: 0, y: 0.23076925}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a72bc0a4275579c4899d4449a5420dbb
+      internalID: -13273438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerPantsDead
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 475
+        width: 10
+        height: 4
+      alignment: 9
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cb0b8d31ec70c14e845868ffe0b8ef1
+      internalID: 464394597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerLegDead1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 465
+        width: 4
+        height: 9
+      alignment: 9
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40427859b6738b6448e5489396554905
+      internalID: -720244222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerLegDead02
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 465
+        width: 6
+        height: 9
+      alignment: 9
+      pivot: {x: 0.33333334, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f3c47cd496cb6244936b64c8a18e848
+      internalID: -1214236224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GroundMockup
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 448
+        width: 112
+        height: 64
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80af5b1312b8c704188fe03ad1f7cd6c
+      internalID: 1496110649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shadow
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 450
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f52913c35afbf9245b12bf3fa18f683d
+      internalID: -844349227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -481,12 +679,21 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      GroundMockup: 1496110649
       PlayerArm: 2090858583
+      PlayerDeadTorso: -1388790999
       PlayerElbow: -1102132578
       PlayerHand: -894211138
+      PlayerHandLeftDead: 2017677864
+      PlayerHandRightDead: -13273438
       PlayerHead: 349205803
+      PlayerHeadDead: 1462996082
       PlayerLeg: 143005287
+      PlayerLegDead02: -1214236224
+      PlayerLegDead1: -720244222
+      PlayerPantsDead: 464394597
       PlayerTorso: 1402341709
+      Shadow: -844349227
       WhiteCircle: 5171767346870427708
       WhiteTriangle: -3786259183376833858
       ZombieArm: -909492447

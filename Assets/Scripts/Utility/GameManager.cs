@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
+using System.Linq;
 using NodeCanvas.Tasks.Actions;
 using Unity.Cinemachine;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
     public GameObject playerInstance; // reference for the current target.
     [SerializeField] private GameObject zombiePrefab;
+    public static List<GameObject> zombieInstances = new List<GameObject>();
     private int currentScore = 0;
     private bool GameIsOn = false;
     [SerializeField] private CinemachineCamera cinemachineCamera;
@@ -39,9 +42,22 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.O))
+        // Debugging keys for game loop.
+        if (Input.GetKeyDown(KeyCode.O))
         {
             StartGame();
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            GameIsOn = false;
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            SpawnZombie();
+        }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            SpawnZombie();
         }
     }
 
@@ -68,6 +84,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(playerInstance); // remove possible player from the scene.
         }
+        foreach (GameObject zombieInstance in zombieInstances) {
+            Destroy(zombieInstance);
+        }
         // spawn player using random spawnpoint
         SpawnPlayer();
         // init score
@@ -88,6 +107,8 @@ public class GameManager : MonoBehaviour
     // calculate end score, show scorehud and menu buttons. 
     public void GameEnded()
     {
+        print("Game ended");
+        cinemachineCamera.Follow = null; // add zoom in effect into player last position.
         // Scoreboard.
         // calculate and show end score.
         // if highscore, set new highscore
@@ -95,7 +116,7 @@ public class GameManager : MonoBehaviour
         // save the highscore
     }
 
-    // Called from health script, after hits 0.
+    // Called from health script, after health 0 or less.
     public void PlayerDead()
     {
         GameIsOn = false;
@@ -105,6 +126,15 @@ public class GameManager : MonoBehaviour
     {
         playerInstance = Instantiate(playerPrefab, GetRandomSpawnPointPosition(), quaternion.identity);
         cinemachineCamera.Follow = playerInstance.transform;
+    }
+
+    public void SpawnZombie()
+    {
+        if (GameIsOn)
+        {
+            GameObject zombieInstance = Instantiate(zombiePrefab, GetRandomSpawnPointPosition(), CalculateRotationTowardsPlayer());
+            zombieInstances.Add(zombieInstance); // track all zombies in the scene, easy to remove at the next round.
+        }
     }
 
     public Vector3 GetRandomSpawnPointPosition()
@@ -120,6 +150,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Instantiate(respawnPrefab, respawn.transform.position, respawn.transform.rotation);
+    Quaternion CalculateRotationTowardsPlayer() {
+        return Quaternion.identity;
+    }
 
 }

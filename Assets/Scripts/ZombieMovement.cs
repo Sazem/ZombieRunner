@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ZombieMovement : MonoBehaviour
+public class ZombieMovement : MonoBehaviour, IPushable
 {
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 2f;
@@ -12,9 +12,18 @@ public class ZombieMovement : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    private Vector2 pushVelocity;
+    private float pushDownTimer = 0f;
+    [SerializeField] private float pushDecay = 5f;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Start()
+    {
+        target = GameManager.Instance.GetPlayer().transform;
     }
 
     void FixedUpdate()
@@ -35,12 +44,20 @@ public class ZombieMovement : MonoBehaviour
 
         // Move forward in facing direction
         Vector2 forward = transform.up * moveSpeed;
-        rb.linearVelocity = forward;
+
+        // Gradually reduce knockback
+        pushVelocity = Vector2.Lerp(pushVelocity, Vector2.zero, pushDecay * Time.fixedDeltaTime);
+
+        rb.linearVelocity = forward + pushVelocity;
 
         if (animator != null)
         {
             animator.SetFloat("speed", rb.linearVelocity.magnitude);
         }
+    }
+    public void ReceivePush(Vector3 dir, float pushAmount)
+    {
+        pushVelocity = dir * pushAmount;
     }
 }
 

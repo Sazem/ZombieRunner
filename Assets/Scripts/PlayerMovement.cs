@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IPushable
 {
     [SerializeField] private float moveSpeed = 8f;
     [SerializeField] private float turnSpeed = 200f;
