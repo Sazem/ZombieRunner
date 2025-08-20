@@ -10,61 +10,65 @@ The idea for the project is to make simple top down infinite runner/shooter game
 - Android
 
 ### Progress
+**19-20.8.2025**: Deathprefab, floor mockup sprite. Interface for pushable entities. etc
 **18.8.2025**: Added basic Zombie to chase the Player. DamageArea gives dmg and pushes the player.<br>
 **17.8.2025**: GameManager Singleton, changed the project build for Android. Player run animation works.<br>
 **15.8.2025**: v.01 Base Unity Project with moveable character, no art or game play yet.<br>
 
 ## Todo (8.2025)
-- Health System
-    - Receive Damage
-    - Visual Effects
-        - Particles
-    - Audio Effects
-- DamageSystem
-	- Push entity hit & damage
-- Character Controller
-    - Add raycast on forward direction, when obstacle in front, stop movement
-- CameraFollow
+- [ ] Health System
+    - [x] Receive Damage
+    - [ ] Visual Effects
+        - [ ] Particles
+    - [ ] Audio Effects
+- [ ] DamageSystem
+	- [x] Push entity hit & damage
+- [ ] Character Controller
+    - [ ] Add raycast on forward direction, when obstacle in front, stop movement
+- [x] CameraFollow
     - CinemaMachine target follow
-- MainMenu
-- GameLoop
-    - MainMenu
-    - Start
-    - GameLoop
-    - Game Ended
-    - Restart
-- Zombies
-    - Zombie Movement. Raycast based
-    - Random Speed
-    - Obstacle avoidance
-- Spawning
-    - With curves. More time => faster spawning
-- Level
-    - Random level generation with prefabs / level props.
-- Item System
-	- Usable Item or auto use?
-	    - Weapons, 1 time use, drop after use
+- [ ] MainMenu
+- [ ] GameLoop
+    - [ ] MainMenu
+    - [ ] Start
+    - [ ] GameLoop
+    - [ ] Game Ended
+    - [ ] Restart
+- [ ] Zombies
+    - [ ] Zombie Movement. Raycast based
+    - [ ] Random Speed
+    - [ ] Obstacle avoidance
+- [ ] Spawning
+    - [ ] With curves. More time => faster spawning
+- [ ] Level
+    - [ ] Random level generation with prefabs / level props.
+- [ ] Item System
+	- [ ] Usable Item or auto use?
+	    - [ ] Weapons, 1 time use, drop after use
             (ex; shotgun, 7 ammo, autoshoot. Drop after no more bullets)
-	    - Speed
+	    - [ ] Speed
             Increase speed for 5 seconds
-	    - Health
+	    - [ ] Health
             Full health
 - **Graphics**
-	- Player
-	- Zombies
-	- HUD
-		- HealthBar
-		- Item / Weapon
-		- Inputs
-	- Level Props
-		- Asphalt
-		- Grass
-		- Sand
-		- Walls
-        - House roofs
-        - Street lights
-	- Lights
-        -Light halo sprites
+	- [x] Player
+	- [ ] Zombies
+        - [ ] Default Zombie
+        - [ ] Big Zombie
+        - [ ] Slime Zombie 
+	- [ ] HUD
+		- [ ] HealthBar
+		- [ ] Item / Weapon
+		- [ ] Inputs
+	- [ ] Level Props
+		- [ ] Asphalt
+		- [ ] Grass
+		- [ ] Sand
+		- [ ] Walls
+        - [ ] House roofs
+        - [ ] Street lights
+	- [ ] Lights
+        - [ ] Light halo sprites
 
 ## Required Plugins $
 These were removed from the repository because some of them needs licensed from Unity Asset Store.
