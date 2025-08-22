@@ -38,9 +38,12 @@ public class ZombieMovement : MonoBehaviour, IPushable
         Vector2 direction = (target.position - transform.position).normalized;
 
         // Smooth rotation toward target
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-        Quaternion targetRotation = Quaternion.Euler(0, 0, angle);
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+        if (target != null)
+        {
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+            Quaternion targetRotation = Quaternion.Euler(0, 0, angle);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+        }
 
         // Move forward in facing direction
         Vector2 forward = transform.up * moveSpeed;

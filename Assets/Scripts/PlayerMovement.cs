@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
-
+using MoreMountains.Feedbacks;
+using UnityEngine.Analytics;
 public class PlayerMovement : MonoBehaviour, IPushable
 {
     [SerializeField] private float moveSpeed = 8f;
@@ -12,12 +13,13 @@ public class PlayerMovement : MonoBehaviour, IPushable
     private Vector2 pushVelocity;
     private float pushDownTimer = 0f;
     [SerializeField] private float pushDecay = 5f;
+    [SerializeField] private MMF_Player walkFeedback;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         prevPosition = transform.position;
     }
-
 
     // TODO
     // Player runs directly to wall (perpendicular), it gets stuck.
@@ -56,6 +58,16 @@ public class PlayerMovement : MonoBehaviour, IPushable
         float currentVelocity = Vector3.Distance(prevPosition, transform.position);
         currentVelocity /= Time.deltaTime;
         prevPosition = transform.position;
+
+        // play walk feedback if player is moving more than threshold.
+        if (currentVelocity > 1.0)
+        {
+
+            if (walkFeedback.IsPlaying == false) 
+                {
+                    walkFeedback?.PlayFeedbacks();
+                } 
+        }
         // Movement animation
         if (animator != null)
         {

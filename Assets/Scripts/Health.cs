@@ -2,16 +2,17 @@ using System;
 using System.IO.Compression;
 using UnityEngine;
 using UnityEngine.Events;
-
+using MoreMountains.Feedbacks;
 public class Health : MonoBehaviour
 {
     [SerializeField] int startingHealth = 5;
-    private int currentHealth;
+    [SerializeField] private int currentHealth;
 
     public Action onDeath;
     public Action onHealthChanged;
     public IPushable pushable;
     [SerializeField] private GameObject deathPrefab;
+    [SerializeField] private MMF_Player hurtFeedback; 
     void Start()
     {
         currentHealth = startingHealth;
@@ -30,13 +31,12 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-
+        hurtFeedback?.PlayFeedbacks(); // play hurt visuals, sfx etc.
         if (currentHealth <= 0)
         {
             Die();
         }
         // Todo
-        // -VFX
         // -add signal, for GameManager, hud etc.
         //      if enemy, add score
         //      if player, stop game loop.
@@ -64,5 +64,12 @@ public class Health : MonoBehaviour
                            // remove entitys
         Destroy(gameObject);
     }
-    
+    public void AddHealth(int amount)
+    {
+        currentHealth += amount;
+        if (currentHealth > startingHealth)
+        {
+            currentHealth = startingHealth;
+        }
+    }
 }
