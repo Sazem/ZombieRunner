@@ -5,6 +5,7 @@ using UnityEngine.Analytics;
 public class PlayerMovement : MonoBehaviour, IPushable
 {
     [SerializeField] private float moveSpeed = 8f;
+    private float originalSpeed;
     [SerializeField] private float turnSpeed = 200f;
     [SerializeField] private Animator animator;
     private Rigidbody2D rb;
@@ -14,11 +15,12 @@ public class PlayerMovement : MonoBehaviour, IPushable
     private float pushDownTimer = 0f;
     [SerializeField] private float pushDecay = 5f;
     [SerializeField] private MMF_Player walkFeedback;
-    
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         prevPosition = transform.position;
+        originalSpeed = moveSpeed;
     }
 
     // TODO
@@ -63,10 +65,10 @@ public class PlayerMovement : MonoBehaviour, IPushable
         if (currentVelocity > 1.0)
         {
 
-            if (walkFeedback.IsPlaying == false) 
-                {
-                    walkFeedback?.PlayFeedbacks();
-                } 
+            if (walkFeedback.IsPlaying == false)
+            {
+                walkFeedback?.PlayFeedbacks();
+            }
         }
         // Movement animation
         if (animator != null)
@@ -80,4 +82,14 @@ public class PlayerMovement : MonoBehaviour, IPushable
     {
         pushVelocity = dir * pushAmount;
     }
+    // boost speed, used for ex; item pickups. Adjusted from Inventory. 
+    public void AddSpeed(float amount)
+    {
+        moveSpeed += amount;
+    }
+    public void ResetSpeed()
+    {
+        moveSpeed = originalSpeed;
+    }
+
 }

@@ -4,6 +4,7 @@ public class ZombieMovement : MonoBehaviour, IPushable
 {
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private Vector2 minMaxSpeed = new Vector2(2f, 3.5f); // x min, y max speeds.
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] Animator animator;
 
@@ -24,6 +25,7 @@ public class ZombieMovement : MonoBehaviour, IPushable
     void Start()
     {
         target = GameManager.Instance.GetPlayer().transform;
+        moveSpeed = Random.Range(minMaxSpeed.x, minMaxSpeed.y); // randomize the moveSpeed for different zombies to have some variations.
     }
 
     void FixedUpdate()
@@ -44,6 +46,7 @@ public class ZombieMovement : MonoBehaviour, IPushable
             Quaternion targetRotation = Quaternion.Euler(0, 0, angle);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         }
+       
 
         // Move forward in facing direction
         Vector2 forward = transform.up * moveSpeed;

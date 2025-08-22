@@ -10,6 +10,7 @@ The idea for the project is to make simple top down infinite runner/shooter game
 - Android
 
 ### Progress
+**23.8.2025**: Health + Speed pickups.<br>
 **19-20.8.2025**: Deathprefab, floor mockup sprite. Interface for pushable entities. etc<br>
 **18.8.2025**: Added basic Zombie to chase the Player. DamageArea gives dmg and pushes the player.<br>
 **17.8.2025**: GameManager Singleton, changed the project build for Android. Player run animation works.<br>
@@ -18,25 +19,30 @@ The idea for the project is to make simple top down infinite runner/shooter game
 ## Todo (8.2025)
 - [ ] Health System
     - [x] Receive Damage
-    - [ ] Visual Effects
+    - [x] Visual Effects
         - [ ] Particles
     - [ ] Audio Effects
 - [ ] DamageSystem
 	- [x] Push entity hit & damage
 - [ ] Character Controller
     - [ ] Add raycast on forward direction, when obstacle in front, stop movement
+    - [ ] Use forward raycast to auto steer away from obstacle diretly in front. 
+    - [ ] Move backwards with possibility to turn left/right.
 - [x] CameraFollow
     - CinemaMachine target follow
+- [ ] Weapon System
+    - [ ] Auto shooting & Aiming
 - [ ] MainMenu
 - [ ] GameLoop
     - [ ] MainMenu
-    - [ ] Start
-    - [ ] GameLoop
+    - [x] Start
+    - [x] GameLoop
     - [ ] Game Ended
+        - [ ] Show Score & Menu buttons
     - [ ] Restart
 - [ ] Zombies
     - [ ] Zombie Movement. Raycast based
-    - [ ] Random Speed
+    - [x] Random Speed
     - [ ] Obstacle avoidance
 - [ ] Spawning
     - [ ] With curves. More time => faster spawning
@@ -46,10 +52,11 @@ The idea for the project is to make simple top down infinite runner/shooter game
 	- [ ] Usable Item or auto use?
 	    - [ ] Weapons, 1 time use, drop after use
             (ex; shotgun, 7 ammo, autoshoot. Drop after no more bullets)
-	    - [ ] Speed
+	    - [x] Speed
             Increase speed for 5 seconds
-	    - [ ] Health
+	    - [x] Health
             Full health
+    - [ ] Loot Drop
 - **Graphics**
 	- [x] Player
 	- [ ] Zombies
