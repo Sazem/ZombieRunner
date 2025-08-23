@@ -1400,7 +1400,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1422,7 +1422,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1431,6 +1431,28 @@ TextureImporter:
       bones: []
       spriteID: 88325ed8c1aca2046bcd484696d64881
       internalID: -741596221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CarBlue
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 438
+        width: 33
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1721d11e016637841b6c8fa08a72b848
+      internalID: 1209665456
       vertices: []
       indices: 
       edges: []
@@ -1449,6 +1471,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      CarBlue: 1209665456
       GroundMockup: 1496110649
       PlayerArm: 2090858583
       PlayerDeadTorso: -1388790999

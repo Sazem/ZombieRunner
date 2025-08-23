@@ -3,7 +3,7 @@
 This is prototype mobile game project for Android.<br>
 The idea for the project is to make simple top down infinite runner/shooter game<br>and learn mobile development and behaviour trees (NodeCanvas)
 
-![Project Logo](Images/Screenshot2025-08-18.png)
+![Project Logo](Images/Screenshot2025-08-23.png)
 
 ## Platform
 - Unity 6
