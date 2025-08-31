@@ -25,8 +25,8 @@ The idea for the project is to make simple top down infinite runner/shooter game
 - [ ] DamageSystem
 	- [x] Push entity hit & damage
 - [ ] Character Controller
-    - [ ] Add raycast on forward direction, when obstacle in front, stop movement
-    - [ ] Use forward raycast to auto steer away from obstacle diretly in front. 
+    - [ ] Add raycast on forward direction, if obstacle in exactly perpendicular in front, stop movement.
+    - [ ] Use forward raycast to auto steer away from obstacle diretly in front, using the normal of the obstacle. 
     - [ ] Move backwards with possibility to turn left/right.
 - [x] CameraFollow
     - CinemaMachine target follow
@@ -41,7 +41,7 @@ The idea for the project is to make simple top down infinite runner/shooter game
         - [ ] Show Score & Menu buttons
     - [ ] Restart
 - [ ] Zombies
-    - [ ] Zombie Movement. Raycast based
+    - [ ] Zombie Movement. Raycast based, turn away from obstacles. Calculate turning by crossproduct of the target vs obstacle. 
     - [x] Random Speed
     - [ ] Obstacle avoidance
 - [ ] Spawning

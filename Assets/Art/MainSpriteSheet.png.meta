@@ -1444,7 +1444,7 @@ TextureImporter:
         width: 33
         height: 73
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1453,6 +1453,28 @@ TextureImporter:
       bones: []
       spriteID: 1721d11e016637841b6c8fa08a72b848
       internalID: 1209665456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CarShadow
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 438
+        width: 34
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f2fb5f7cba017948ac47b890dd61334
+      internalID: 1972593239
       vertices: []
       indices: 
       edges: []
@@ -1472,6 +1494,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       CarBlue: 1209665456
+      CarShadow: 1972593239
       GroundMockup: 1496110649
       PlayerArm: 2090858583
       PlayerDeadTorso: -1388790999

@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 6770174680171383807}
   - component: {fileID: 1388947469843176355}
   - component: {fileID: 1825203769088714638}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Zombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -489,6 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2.5
+  minMaxSpeed: {x: 2, y: 3.5}
   rotationSpeed: 200
   animator: {fileID: 3752983511906580949}
   target: {fileID: 0}
@@ -621,6 +622,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 5
+  currentHealth: 0
+  deathPrefab: {fileID: 0}
+  hurtFeedback: {fileID: 0}
 --- !u!1 &2363438078013039723
 GameObject:
   m_ObjectHideFlags: 0
