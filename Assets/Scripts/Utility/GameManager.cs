@@ -18,12 +18,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject zombiePrefab;
     public static List<GameObject> zombieInstances = new List<GameObject>();
     private int currentScore = 0;
+    private float gameTimer = 0.0f;
     private bool GameIsOn = false;
     [SerializeField] private CinemachineCamera cinemachineCamera;
     [SerializeField] private GameObject[] spawnpoints;
     [SerializeField] private Menu menu;
 
-    private Coroutine gameLoopCoroutine; 
+    private Coroutine gameLoopCoroutine;
     private void Awake()
     {
         if (Instance == null)
@@ -65,6 +66,10 @@ public class GameManager : MonoBehaviour
         {
             SpawnZombie();
         }
+        if (GameIsOn)
+        {
+            gameTimer += Time.deltaTime;
+        }
     }
 
     // enemies can receive the player as target with this function
@@ -100,6 +105,8 @@ public class GameManager : MonoBehaviour
         SpawnPlayer();
         // init score
         currentScore = 0;
+        gameTimer = 0.0f;
+        InvokeRepeating("UpdateGameTimer", 1.0f, 1.0f);
         if (gameLoopCoroutine == null)
         {
             gameLoopCoroutine = StartCoroutine(GameLoop());
@@ -114,6 +121,7 @@ public class GameManager : MonoBehaviour
     {
         print("We are at the game loop");
         GameIsOn = true;
+        StartCoroutine(ZombieSpawner());
         while (GameIsOn) // keep the GameLoop until player dead and/or GameEnded. 
         {
             yield return null;
@@ -127,6 +135,7 @@ public class GameManager : MonoBehaviour
     public void GameEnded()
     {
         print("Game ended");
+        CancelInvoke("UpdateGameTimer");
         cinemachineCamera.Follow = null; // add zoom in effect into player last position.
         // Scoreboard.
         menu.gameObject.SetActive(true);
@@ -162,6 +171,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    IEnumerator ZombieSpawner()
+    {
+        float spawnInterval = 5f;
+        float minInterval = 0.05f;
+        float difficultyRamp = 0.95f;
+        while (GameIsOn)
+        {
+            SpawnZombie();
+            yield return new WaitForSeconds(spawnInterval);
+            spawnInterval *= difficultyRamp;
+            spawnInterval = Mathf.Max(spawnInterval, minInterval);
+        }
+    }
+
+
     public void SpawnZombie()
     {
         if (GameIsOn)
@@ -184,8 +208,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    Quaternion CalculateRotationTowardsPlayer() {
+    Quaternion CalculateRotationTowardsPlayer()
+    {
         return Quaternion.identity;
     }
 
+    public void UpdateGameTimer()
+    {
+        currentScore++;
+        hud.UpdateTimer(gameTimer);
+    }
 }

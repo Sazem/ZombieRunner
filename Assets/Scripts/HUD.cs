@@ -35,4 +35,12 @@ public class HUD : MonoBehaviour
         itemPickUpText.gameObject.SetActive(false);
     }
 
+    // update the HUD timer every second.
+    public void UpdateTimer(float currentTime)
+    {
+        int minutes = Mathf.FloorToInt(currentTime / 60f);
+        int seconds = Mathf.FloorToInt(currentTime % 60f);
+        string timeString = string.Format("{0}:{1:00}", minutes, seconds);
+        scoreText.text = "Timer: " + timeString;
+    }
 }
