@@ -9,11 +9,12 @@ public class Health : MonoBehaviour
     [SerializeField] private int currentHealth;
 
     public Action onDeath;
-    public Action onHealthChanged;
+    public event Action<int> OnHealthChanged;
     public IPushable pushable;
     [SerializeField] private GameObject deathPrefab;
-    [SerializeField] private MMF_Player hurtFeedback; 
-    void Start()
+    [SerializeField] private MMF_Player hurtFeedback;
+
+    void Awake()
     {
         currentHealth = startingHealth;
         pushable = GetComponent<IPushable>();
@@ -21,8 +22,8 @@ public class Health : MonoBehaviour
         {
             print(pushable.ToString());
         }
+        
     }
-
     void Update()
     {
 
@@ -35,6 +36,10 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+        }
+        else
+        {
+            OnHealthChanged?.Invoke(currentHealth);
         }
         // Todo
         // -add signal, for GameManager, hud etc.
@@ -51,7 +56,7 @@ public class Health : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log("Diee");
+        OnHealthChanged?.Invoke(0);
         // Evoke signal for possible:
         //      GameManager
         //      Hud
@@ -61,7 +66,6 @@ public class Health : MonoBehaviour
             Instantiate(deathPrefab, this.transform.position, transform.rotation);
         }
         onDeath?.Invoke(); // null condition operator, if there is this has method registered it will call them. If empty, it will not do the invoke. 
-                           // remove entitys
         Destroy(gameObject);
     }
     public void AddHealth(int amount)
@@ -71,5 +75,11 @@ public class Health : MonoBehaviour
         {
             currentHealth = startingHealth;
         }
+        OnHealthChanged?.Invoke(currentHealth);
+    }
+    
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
     }
 }

@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; set; }
     [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private HUD hud; // update health, score etc when events are triggered (observer pattern)
+    private Inventory inventory;
     public GameObject playerInstance; // reference for the current target.
     [SerializeField] private GameObject zombiePrefab;
     public static List<GameObject> zombieInstances = new List<GameObject>();
@@ -19,6 +21,9 @@ public class GameManager : MonoBehaviour
     private bool GameIsOn = false;
     [SerializeField] private CinemachineCamera cinemachineCamera;
     [SerializeField] private GameObject[] spawnpoints;
+    [SerializeField] private Menu menu;
+
+    private Coroutine gameLoopCoroutine; 
     private void Awake()
     {
         if (Instance == null)
@@ -34,6 +39,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         spawnpoints = GameObject.FindGameObjectsWithTag("Spawnpoint");
+        hud.gameObject.SetActive(false);
     }
     public void HelloWorld()
     {
@@ -79,19 +85,30 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         print("starting the game");
+        hud.gameObject.SetActive(true);
         cinemachineCamera.Follow = null;
+        menu.HideMenu();
         if (playerInstance != null)
         {
             Destroy(playerInstance); // remove possible player from the scene.
         }
-        foreach (GameObject zombieInstance in zombieInstances) {
+        foreach (GameObject zombieInstance in zombieInstances)
+        {
             Destroy(zombieInstance);
         }
         // spawn player using random spawnpoint
         SpawnPlayer();
         // init score
         currentScore = 0;
-        StartCoroutine(GameLoop());
+        if (gameLoopCoroutine == null)
+        {
+            gameLoopCoroutine = StartCoroutine(GameLoop());
+        } // we should check, if its already running and stop it in this case and start again. 
+        else if (gameLoopCoroutine != null)
+        {
+            StopCoroutine(gameLoopCoroutine);
+            gameLoopCoroutine = StartCoroutine(GameLoop());
+        }
     }
     IEnumerator GameLoop()
     {
@@ -101,6 +118,8 @@ public class GameManager : MonoBehaviour
         {
             yield return null;
         }
+        print("Game loop passed, going to end of the game");
+        yield return new WaitForSeconds(1f);
         GameEnded();
     } // spawning zombies loop etc.
 
@@ -110,13 +129,16 @@ public class GameManager : MonoBehaviour
         print("Game ended");
         cinemachineCamera.Follow = null; // add zoom in effect into player last position.
         // Scoreboard.
+        menu.gameObject.SetActive(true);
+        hud.gameObject.SetActive(false);
+        menu.ShowScoreboard(currentScore);
         // calculate and show end score.
         // if highscore, set new highscore
         // show "NEW HIGH SCORE" sprite with tween animation
         // save the highscore
     }
 
-    // Called from health script, after health 0 or less.
+    // Called from health script event, after health 0 or less.
     public void PlayerDead()
     {
         GameIsOn = false;
@@ -126,6 +148,18 @@ public class GameManager : MonoBehaviour
     {
         playerInstance = Instantiate(playerPrefab, GetRandomSpawnPointPosition(), quaternion.identity);
         cinemachineCamera.Follow = playerInstance.transform;
+        Health playerHealth = playerInstance.GetComponent<Health>();
+        if (playerHealth != null && hud != null) // subscripte for the health change event
+        {
+            playerHealth.OnHealthChanged += hud.UpdateHealth;
+            hud.UpdateHealth(playerHealth.GetCurrentHealth());
+            playerHealth.onDeath += PlayerDead; // decoupled from health script, subscripe for death even only on player. Stop the game.  
+        }
+        inventory = playerInstance.GetComponent<Inventory>();
+        if (inventory != null && hud != null)
+        {
+            inventory.onItemPickedUpEvent += hud.ItemPickedUp;
+        }
     }
 
     public void SpawnZombie()
