@@ -1,7 +1,8 @@
 ![Project Logo](Images/project_logo.png)
 
 This is prototype mobile game project for Android.<br>
-The idea for the project is to make simple top down infinite runner/shooter game<br>and learn mobile development and behaviour trees (NodeCanvas)
+The idea for the project is to make simple top down infinite runner/shooter game<br>
+and learn mobile development and behaviour trees (NodeCanvas)
 
 ![Project Logo](Images/Screenshot2025-08-23.png)
 
@@ -10,6 +11,7 @@ The idea for the project is to make simple top down infinite runner/shooter game
 - Android
 
 ### Progress
+**1.9.2025**: Mockup HUD & Start/End screen. Timer & Spawning system for Zombies. Player has obstacle avoidance with Raycasts<br>
 **23.8.2025**: Health + Speed pickups.<br>
 **19-20.8.2025**: Deathprefab, floor mockup sprite. Interface for pushable entities. etc<br>
 **18.8.2025**: Added basic Zombie to chase the Player. DamageArea gives dmg and pushes the player.<br>
@@ -25,7 +27,7 @@ The idea for the project is to make simple top down infinite runner/shooter game
 - [ ] DamageSystem
 	- [x] Push entity hit & damage
 - [ ] Character Controller
-    - [ ] Add raycast on forward direction, if obstacle in exactly perpendicular in front, stop movement.
+    - [x] Add raycast on forward direction, if obstacle in exactly perpendicular in front, stop movement.
     - [ ] Use forward raycast to auto steer away from obstacle diretly in front, using the normal of the obstacle. 
     - [ ] Move backwards with possibility to turn left/right.
 - [x] CameraFollow
@@ -37,15 +39,15 @@ The idea for the project is to make simple top down infinite runner/shooter game
     - [ ] MainMenu
     - [x] Start
     - [x] GameLoop
-    - [ ] Game Ended
-        - [ ] Show Score & Menu buttons
-    - [ ] Restart
+    - [x] Game Ended
+        - [x] Show Score & Menu buttons
+    - [x] Restart
 - [ ] Zombies
     - [ ] Zombie Movement. Raycast based, turn away from obstacles. Calculate turning by crossproduct of the target vs obstacle. 
     - [x] Random Speed
     - [ ] Obstacle avoidance
-- [ ] Spawning
-    - [ ] With curves. More time => faster spawning
+- [x] Spawning
+    - [x] With curves. More time => faster spawning
 - [ ] Level
     - [ ] Random level generation with prefabs / level props.
 - [ ] Item System
