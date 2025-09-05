@@ -621,7 +621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 925b3b570598d74408db93f3b7f40595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 5
+  startingHealth: 1
   currentHealth: 0
   deathPrefab: {fileID: 0}
   hurtFeedback: {fileID: 0}
